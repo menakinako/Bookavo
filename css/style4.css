@@ -1,0 +1,5 @@
+.pagination a {
+    border: 1px solid #ddd; /* Gray */
+  }
+
+  .pagination a:hover:not(.active) {background-color: #ddd;}
