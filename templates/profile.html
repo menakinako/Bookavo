@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th ="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeLeaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> My Profile </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{assets/css/style2.css}">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="assets/css/gijgo.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/animated-headline.css">
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+	<link rel="stylesheet" href="assets/css/themify-icons.css">
+	<link rel="stylesheet" href="assets/css/slick.css">
+	<link rel="stylesheet" href="assets/css/nice-select.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+    <div class="team-single">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 xs-margin-30px-bottom">
+                <div class="team-single-img">
+                    <br><br><br>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                </div>
+                  <div class = "text-center">
+                    <br>
+                    <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Follow</button>
+                   <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Message</button>
+
+                    <div class="margin-20px-top team-single-icons">
+                        <ul class="no-margin">
+                            <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="col-lg-8 col-md-7">
+                <div class="team-single-text padding-50px-left sm-no-padding-left">
+                   <h1><br><br><br><b><span class="name" sec:authentication="principal.FirstName"></span><span class="tab" sec:authentication=" principal.LastName"></span></b></p>
+                   
+                    <div class="contact-info-section margin-40px-tb">
+                        <ul class="list-style9 no-margin">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-envelope text-pink"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p><span class="name" sec:authentication="principal.Username"></span></p>
+                                    </div>
+                                </div>
+                            
+                            
+                        </ul>
+                    </div>
+
+                    
+                    
+
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>

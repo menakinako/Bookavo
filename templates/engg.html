@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th ="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeLeaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Engineering</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/style4.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+</head>    
+<body>
+    <div class ="container text-center">
+           <div><h1>LIST </h1></div>
+           <div> 
+               <table class = "table table-bordered">
+                   <thead class ="thead-dark">
+                       <tr>
+                           <th>BOOK</th>
+                           <th>DESCRIPTION</th>
+                           <th>ADD To MYBOOKS</th>
+                       </tr>
+                    </thead>
+                   <tbody>
+                        <tr th:each ="engg :${listEngg}">
+                           
+                               <td><img th:src ="@{${engg.EnggImagePath}}" style ="width: 200px;"></td>
+                                <td>[[${engg.book}]]<br>
+                                    [[${engg.description}]]<br>
+                                    [[${engg.lender}]]<br>
+                                </td>
+                                <td><a type="button" class="btn btn-primary addtocart11" th:href ="@{'/cart/add/' + ${engg.id}}" >Add</a></td>     
+                        </tr>
+                       
+                   </tbody>
+               </table>
+           </div>
+              <div>&nbsp;</div>
+           <nav aria-label="Demo of Bootstrap 4 Navigation">
+                <ul class="pagination justify-content-center">
+
+                    <li class="page-item">
+                   <a th:if="${currentPage > 1}" class="page-link" th:href="@{/page/1}"> First</a>
+                   <span th:unless="${currentPage > 1}"> First</span>
+                   &nbsp;&nbsp;
+                    </li>
+
+                    <li class="page-item">
+                   <a th:if="${currentPage > 1}" class="page-link" th:href="@{'/page/' + ${currentPage - 1}}"> Previous</a>
+                   <span th:unless="${currentPage > 1}"> Previous</span>
+                   &nbsp;&nbsp;
+                    </li>
+  
+                    <li class="page-item">
+                   <span th:each ="i: ${#numbers.sequence(1, totalPages)}">
+                       <a th:if ="${i != currentPage}" class="page-link" th:href ="@{'/page/' +${i}}">[[${i}]]</a>
+                       <span th:unless ="${i != currentPage}">[[${i}]]</span>
+                       &nbsp;&nbsp;
+                   </span>
+                    </li>
+ 
+                    <li class="page-item">
+                   <a th:if="${currentPage < totalPages}"  class="page-link" th:href="@{'/page/' + ${currentPage + 1}}"> Next</a>
+                   <span th:unless="${currentPage < totalPages}"> Next</span>
+                   &nbsp;&nbsp;
+                   </li>
+
+                   <li class="page-item">
+                   <a th:if="${currentPage < totalPages}" class="page-link"  th:href="@{'/page/' + ${totalPages}}"> Last</a>
+                   <span th:unless="${currentPage < totalPages}"> Last</span>
+                   </li>
+                </ul>
+            </nav>
+    </div>
+
+    <div class ="modal fade text-center" id ="Mymodal">
+        <div class="modal-dialog">
+            <div class= "model-content">
+
+                <div class ="modal-header">
+                    <h4 class="modal-title" id= "modalTitle">Warning</h4>
+                    <button type ="button" class="close" data-dismiss= "modal">&times;</button>
+                </div>
+
+                <div class ="modal-body">
+                    <span id="modalBody"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss ="modal">Close</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+      <script type ="text/javascript">
+       contextPath = "[[@{/}]]";
+       var crsfHeaderName = "[[${_csrf.headerName}]]";
+       var crsfValue = "[[${_csrf.token}]]";
+     
+      </script>
+    
+      <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+       <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <!-- Jquery, Popper, Bootstrap -->
+     <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+     <script src="./assets/js/popper.min.js"></script>
+     <script src="./assets/js/bootstrap.min.js"></script>
+     <!-- Jquery Mobile Menu -->
+     <script src="./assets/js/jquery.slicknav.min.js"></script>
+     <!--Js -->
+     <script th:src="@{./assets/js/common.js}"></script>
+     <!-- Jquery Slick , Owl-Carousel Plugins -->
+     <script src="./assets/js/owl.carousel.min.js"></script>
+     <script src="./assets/js/slick.min.js"></script>
+      <!-- One Page, Animated-HeadLin -->
+      <script src="./assets/js/wow.min.js"></script>
+      <script src="./assets/js/animated.headline.js"></script>
+      <script src="./assets/js/jquery.magnific-popup.js"></script>
+
+      <!-- Date Picker -->
+      <script src="./assets/js/gijgo.min.js"></script>
+      <!-- Nice-select, sticky -->
+      <script src="./assets/js/jquery.nice-select.min.js"></script>
+      <script src="./assets/js/jquery.sticky.js"></script>
+      <!-- Progress -->
+      <script src="./assets/js/jquery.barfiller.js"></script>
+
+        <!-- counter , waypoint,Hover Direction -->
+       <script src="./assets/js/jquery.counterup.min.js"></script>
+       <script src="./assets/js/waypoints.min.js"></script>
+       <script src="./assets/js/jquery.countdown.min.js"></script>
+       <script src="./assets/js/hover-direction-snake.min.js"></script>
+
+      <!-- contact js -->
+     <script src="./assets/js/contact.js"></script>
+     <script src="./assets/js/jquery.form.js"></script>
+     <script src="./assets/js/jquery.validate.min.js"></script>
+     <script src="./assets/js/mail-script.js"></script>
+     <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+     <!-- Jquery Plugins, main Jquery -->	
+     <script src="./assets/js/plugins.js"></script>
+     <script src="./assets/js/main.js"></script>
+     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+     <script th:src="@{./assets/js/add1.js}"></script>
+
+</body>
+</html>

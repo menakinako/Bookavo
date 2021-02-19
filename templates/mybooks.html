@@ -1,0 +1,137 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th ="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeLeaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+
+</head>
+
+<body>
+    <div>
+        <h2>Your Cart</h2>
+        <br>
+    </div>
+    
+    <div class = "row">
+        <div class ="col">
+            <th:block th:each="item, status : ${cartItems}">
+                <div class ="row border rounded" th:with ="engg = ${item.engg}"
+                             th:id="'row' + ${status.count}">
+                    <div class ="col">
+                        <div>[[${status.count}]]</div>
+                        <div>
+                            <a class ="fas-trash icon-dark link-remove" 
+                             th:rowNumber="${status.count}"
+                             th:href ="@{'/cart/remove/' + ${engg.id}}">
+                            </a>
+                        </div>
+                    </div>
+                      <div class ="col">
+                        <img th:src ="@{${engg.EnggImagePath}}" class ="image-fluid" style ="width: 200px;">    
+                     </div>
+                      <div class ="col">
+                          <div>
+                              <a>
+                                  <b>[[${engg.book}]]</b><br>
+                                  <b>[[${engg.description}]]</b><br>
+                                  <b>[[${engg.lender}]]</b>
+                              </a>
+                          </div>
+                      </div>
+                </div>
+            </th:block>
+        </div>
+         <div class="col">
+             <button class="btn btn-primary">Ask</button>
+         </div>
+     
+    </div>
+
+    <div th:if= "${#lists.isEmpty(cartItems)}">
+        <h3>No items in the cart </h3>
+    </div>
+
+
+    <div class ="modal fade text-center" id ="Mymodal">
+        <div class="modal-dialog">
+            <div class= "model-content">
+
+                <div class ="modal-header">
+                    <h4 class="modal-title" id= "modal-title">Warning</h4>
+                    <button type ="button" class="close" data-dismiss= "modal">&times;</button>
+                </div>
+
+                <div class ="modal-body">
+                    <span id="modal-body"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss ="modal">Close</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script type ="text/javascript">
+        contextPath = "[[@{/}]]";
+        var crsfHeaderName = "[[${_csrf.headerName}]]";
+        var crsfValue = "[[${_csrf.token}]]";
+    </script>
+    
+    <script src="./assets/js/mybooks.js"></script>
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/js/popper.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="./assets/js/jquery.slicknav.min.js"></script>
+<!--Js -->
+<script th:src="@{./assets/js/common.js}"></script>
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/slick.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="./assets/js/wow.min.js"></script>
+<script src="./assets/js/animated.headline.js"></script>
+<script src="./assets/js/jquery.magnific-popup.js"></script>
+
+<!-- Date Picker -->
+<script src="./assets/js/gijgo.min.js"></script>
+<!-- Nice-select, sticky -->
+<script src="./assets/js/jquery.nice-select.min.js"></script>
+<script src="./assets/js/jquery.sticky.js"></script>
+<!-- Progress -->
+<script src="./assets/js/jquery.barfiller.js"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="./assets/js/jquery.counterup.min.js"></script>
+<script src="./assets/js/waypoints.min.js"></script>
+<script src="./assets/js/jquery.countdown.min.js"></script>
+<script src="./assets/js/hover-direction-snake.min.js"></script>
+
+<!-- contact js -->
+<script src="./assets/js/contact.js"></script>
+<script src="./assets/js/jquery.form.js"></script>
+<script src="./assets/js/jquery.validate.min.js"></script>
+<script src="./assets/js/mail-script.js"></script>
+<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/main.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+
+</body>
+</html>
